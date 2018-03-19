@@ -285,9 +285,20 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\AgentDataGrabber.cs" />
+    <Compile Include="Assets\Scripts\AgentTemplate1.cs" />
+    <Compile Include="Assets\Scripts\BehaviorDriver.cs" />
     <Compile Include="Assets\Scripts\BoxMuller.cs" />
+    <Compile Include="Assets\Scripts\CanadianRhythm.cs" />
     <Compile Include="Assets\Scripts\Fatigue.cs" />
     <Compile Include="Assets\Scripts\FloatingFlag.cs" />
+    <Compile Include="Assets\Scripts\LocationDataGrabber.cs" />
+    <Compile Include="Assets\Scripts\LocationTemplate.cs" />
+    <Compile Include="Assets\Scripts\MathHelpers.cs" />
+    <Compile Include="Assets\Scripts\MovementController.cs" />
+    <Compile Include="Assets\Scripts\NavigateOnTime.cs" />
+    <Compile Include="Assets\Scripts\ScheduleBuilder.cs" />
+    <Compile Include="Assets\Scripts\ScheduleItem.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />
