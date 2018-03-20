@@ -40,7 +40,42 @@ public class MathHelpers : MonoBehaviour
     public static int MakeAChoice(int lowNumberInclusive, int highHumberInclusive)
     {
         int choiceOutput = Random.Range(lowNumberInclusive, highHumberInclusive);
-      
+
         return choiceOutput;
     }
+
+    public static string DayOfTheWeek(int dayNumber)
+    {
+
+        string weekday = "";
+        int dayOfWeek = dayNumber;
+        switch (dayOfWeek)
+        {
+            case 1:
+                weekday = "Monday";
+                break;
+            case 2:
+                weekday = "Tuesday";
+                break;
+            case 3:
+                weekday = "Wednesday";
+                break;
+            case 4:
+                weekday = "Thursday";
+                break;
+            case 5:
+                weekday = "Friday";
+                break;
+            case 6:
+                weekday = "Saturday";
+                break;
+            case 7:
+                weekday = "Sunday";
+                break;
+            default:
+                weekday = "error";
+                break;
+        }
+        return weekday;
+    } 
 }
