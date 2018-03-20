@@ -6,9 +6,11 @@ using UnityEngine.UI;
 public class CanadianRhythm : MonoBehaviour {
     private float startTime;
     public float elapsedTime;
-    public int timeScale =100 ;
+    public float timeScale =100 ;
     public static int calendarDay;
     public static float timeOfDay;
+
+    private GUIStyle guiStyle = new GUIStyle();
     // Use this for initialization
     private void Awake()
     {
@@ -26,8 +28,12 @@ public class CanadianRhythm : MonoBehaviour {
     }
 
     void OnGUI() {
-       GUI.Label(new Rect(300, 100, 100, 20), ("Day: " + calendarDay.ToString()));
-       GUI.Label(new Rect(300, 40, 120, 20), ("TOD: " + (timeOfDay).ToString()));
+
+   
+        guiStyle.fontSize = 20;
+ 
+        GUI.Label(new Rect(20, 30, 100, 20), ("Day: " + calendarDay.ToString()),guiStyle);
+        GUI.Label(new Rect(20, 10, 120, 20), ("TOD: " + MathHelpers.FloatToTime(timeOfDay)),guiStyle);
     }
 
     public static float GameTime()

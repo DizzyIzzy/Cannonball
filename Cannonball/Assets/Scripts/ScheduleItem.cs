@@ -10,10 +10,7 @@ public class ScheduleItem {
     public Vector3 itemNavFromPos;
     public Vector3 itemNavTarget;
 
-    public ScheduleItem()
-    {
-        complete = false;
-    }
+
     public ScheduleItem(float newTime, string newAction, int newPriority)
     {
         eventTime = newTime;

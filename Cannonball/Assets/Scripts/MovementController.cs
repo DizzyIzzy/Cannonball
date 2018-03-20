@@ -5,8 +5,8 @@ using UnityEngine;
 public class MovementController : MonoBehaviour {
     public Vector3 navTarget;
     public Vector3 startPos;
-    public Transform endMarker;
-    public float speed = 1.0F;
+
+    public float speed = 100F;
     private float tripStartTime;
     private float journeyLength;
     public bool moving = false;
@@ -46,6 +46,5 @@ public class MovementController : MonoBehaviour {
         startPos = startFrom;
         tripStartTime = Time.time;
         journeyLength = Vector3.Distance(startPos, navTarget);
-
     }
 }

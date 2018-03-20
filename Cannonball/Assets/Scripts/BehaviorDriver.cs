@@ -121,15 +121,16 @@ public class BehaviorDriver : MonoBehaviour {
             //build the sequence of events as a string
             outputSked = (outputSked + " Breakfast: " + breakfastString + "Leave for Work at:" + leaveHomeString + " Lunch: " + lunchString + " Dinner: " + dinnerString + " Leave work at:" + leaveWorkString);
 
-            //physical movements
+            //clear the last day's schedule
             gameObject.GetComponent<ScheduleBuilder>().Refresh();
+            //build and populate the schedule items from recurring schedule items
             ScheduleItem hopper1 = BuildScheduleItem(leaveHome, "Leave Home", thisAgentData.homePlaceTransform.position, thisAgentData.workPlaceTransform.position, 1);
-            print("hop1"+ hopper1.ScheduleItemString());
+     
             gameObject.GetComponent<ScheduleBuilder>().AddIn(hopper1);
             ScheduleItem hopper2 = BuildScheduleItem(leaveWork, "Leave Work", thisAgentData.workPlaceTransform.position, thisAgentData.homePlaceTransform.position, 1);
-            print("hop1,try2:" + hopper1.ScheduleItemString());
-            print("hop2:" + hopper2.ScheduleItemString());
             gameObject.GetComponent<ScheduleBuilder>().AddIn(hopper2);
+
+            //execute physical movements
         }
         else
         {
@@ -159,18 +160,7 @@ public class BehaviorDriver : MonoBehaviour {
 
     private ScheduleItem BuildScheduleItem(float eventTime, string eventName, Vector3 from, Vector3 to, int priority )
     {
-       ScheduleItem newScheduleItem = new ScheduleItem();
-        // newScheduleItem = new ScheduleItem(eventTime, eventName, from, to, riority);
-        newScheduleItem = new ScheduleItem();
-        newScheduleItem.eventTime = eventTime;
-        newScheduleItem.action = eventName;
-        newScheduleItem.itemNavFromPos = from;
-        newScheduleItem.itemNavTarget = to;
-        newScheduleItem.priority = priority;
-        print(newScheduleItem.ScheduleItemString());
-        //gameObject.GetComponent<ScheduleBuilder>().dayPlanner.Add(newScheduleItem);
-       // gameObject.GetComponent<ScheduleBuilder>().AddIn(eventTime, eventName, from, to, priority);
-        // print(newScheduleItem.eventTime + newScheduleItem.action);
+        ScheduleItem newScheduleItem = new ScheduleItem( eventTime,  eventName,  from,  to,  priority);
         return newScheduleItem;
     }
 
