@@ -15,7 +15,7 @@ public class MathHelpers : MonoBehaviour
         int secondsInt = Mathf.FloorToInt(seconds * 60f);
 
 
-        string outputString = hour + ":" + minuteInt.ToString("00") + ":" + secondsInt.ToString("00");
+        string outputString = hour.ToString("00") + ":" + minuteInt.ToString("00") + ":" + secondsInt.ToString("00");
         return outputString;
     }
 

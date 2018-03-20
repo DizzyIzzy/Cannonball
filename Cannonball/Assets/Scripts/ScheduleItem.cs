@@ -7,10 +7,13 @@ public class ScheduleItem {
     public string action;
     public int priority;
     public bool complete;
-    private Vector3 itemNavFromPos;
-    private Vector3 itemNavTarget;
+    public Vector3 itemNavFromPos;
+    public Vector3 itemNavTarget;
 
-
+    public ScheduleItem()
+    {
+        complete = false;
+    }
     public ScheduleItem(float newTime, string newAction, int newPriority)
     {
         eventTime = newTime;
@@ -27,6 +30,14 @@ public class ScheduleItem {
         complete = false;
         itemNavFromPos = navFromPos;
         itemNavTarget = navTarget;
+        
+    }
+
+    public string ScheduleItemString()
+    {
+        string skedItemString = eventTime +"/"+ action + "/" + itemNavFromPos.ToString() + "/" + itemNavTarget.ToString() + "/" + itemNavTarget + "/" + priority;
+        
+        return skedItemString;
     }
 
 }

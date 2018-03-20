@@ -123,14 +123,18 @@ public class BehaviorDriver : MonoBehaviour {
 
             //physical movements
             gameObject.GetComponent<ScheduleBuilder>().Refresh();
-            BuildScheduleItem(leaveHome, "Leave Home", thisAgentData.homePlaceTransform.position, thisAgentData.workPlaceTransform.position, 1);
-            BuildScheduleItem(leaveWork, "Leave Work", thisAgentData.workPlaceTransform.position, thisAgentData.homePlaceTransform.position, 1);
-
+            ScheduleItem hopper1 = BuildScheduleItem(leaveHome, "Leave Home", thisAgentData.homePlaceTransform.position, thisAgentData.workPlaceTransform.position, 1);
+            print("hop1"+ hopper1.ScheduleItemString());
+            gameObject.GetComponent<ScheduleBuilder>().AddIn(hopper1);
+            ScheduleItem hopper2 = BuildScheduleItem(leaveWork, "Leave Work", thisAgentData.workPlaceTransform.position, thisAgentData.homePlaceTransform.position, 1);
+            print("hop1,try2:" + hopper1.ScheduleItemString());
+            print("hop2:" + hopper2.ScheduleItemString());
+            gameObject.GetComponent<ScheduleBuilder>().AddIn(hopper2);
         }
         else
         {
             string partyPlan ;
-            int choice = MathHelpers.MakeAChoice(1, 3);
+            int choice = MathHelpers.MakeAChoice(1, 4);
             switch (choice)
             {
                 case 1:
@@ -139,6 +143,10 @@ public class BehaviorDriver : MonoBehaviour {
                 case 2:
                     partyPlan = "bar";
                     break;
+                case 3:
+                    partyPlan = "houseparty";
+                    break;
+
                 default:
                     partyPlan = "movies";
                     break;
@@ -149,12 +157,21 @@ public class BehaviorDriver : MonoBehaviour {
     }
 
 
-    private void BuildScheduleItem(float eventTime, string eventName, Vector3 from, Vector3 to, int priority )
+    private ScheduleItem BuildScheduleItem(float eventTime, string eventName, Vector3 from, Vector3 to, int priority )
     {
-        ScheduleItem newScheduleItem = new ScheduleItem(eventTime, eventName, from, to, priority);
-        gameObject.GetComponent<ScheduleBuilder>().dayPlanner.Add(newScheduleItem);
-        print(newScheduleItem.eventTime + newScheduleItem.action);
-       
+       ScheduleItem newScheduleItem = new ScheduleItem();
+        // newScheduleItem = new ScheduleItem(eventTime, eventName, from, to, riority);
+        newScheduleItem = new ScheduleItem();
+        newScheduleItem.eventTime = eventTime;
+        newScheduleItem.action = eventName;
+        newScheduleItem.itemNavFromPos = from;
+        newScheduleItem.itemNavTarget = to;
+        newScheduleItem.priority = priority;
+        print(newScheduleItem.ScheduleItemString());
+        //gameObject.GetComponent<ScheduleBuilder>().dayPlanner.Add(newScheduleItem);
+       // gameObject.GetComponent<ScheduleBuilder>().AddIn(eventTime, eventName, from, to, priority);
+        // print(newScheduleItem.eventTime + newScheduleItem.action);
+        return newScheduleItem;
     }
 
 
