@@ -4,12 +4,13 @@ using UnityEngine;
 
 public class ScheduleBuilder : MonoBehaviour {
     public List<ScheduleItem> agentSchedule = new List<ScheduleItem>();
-    private ScheduleItem doomsday;
-    public string hopper;
+
+    public string nextMove;
     public float TOD;
 
-    public Vector3 navTarget;
     public Vector3 startPos;
+    public Vector3 navTarget;
+    
 
     public float speed = 100F;
     private float tripStartTime;
@@ -19,23 +20,23 @@ public class ScheduleBuilder : MonoBehaviour {
     
     private void Start()
     {
-        doomsday = new ScheduleItem(50, "stopper", 10);
+        
         
     }
 
         private void Update()
     {
         TOD = CanadianRhythm.timeOfDay;
-        hopper = "";
         executeMove();
         if (agentSchedule.Count>0)
           
         {
-            hopper = agentSchedule[0].action.ToString() + " @ " + MathHelpers.FloatToTime(agentSchedule[0].eventTime);
+            nextMove = agentSchedule[0].action.ToString() + " @ " + MathHelpers.FloatToTime(agentSchedule[0].eventTime);
             checkHopper();
             if (agentSchedule[0].complete == true)
             {
                 agentSchedule.RemoveAt(0);
+                if (moving==false)
                 TransferNavData();
             }
         }
@@ -49,11 +50,6 @@ public class ScheduleBuilder : MonoBehaviour {
             startPos = agentSchedule[0].itemNavFromPos;
             navTarget = agentSchedule[0].itemNavTarget;
         }
-        else
-        {
-            startPos = Vector3.zero;
-            navTarget = Vector3.zero;
-        }
     }
 
     private void checkHopper()
@@ -62,10 +58,7 @@ public class ScheduleBuilder : MonoBehaviour {
         if (TOD > agentSchedule[0].eventTime && agentSchedule[0].complete == false)
         {
             moving = true;
-            executeMove();
-            print("checking hopper");
             agentSchedule[0].complete = true;
-          
         }
     }
 
@@ -81,7 +74,6 @@ public class ScheduleBuilder : MonoBehaviour {
                 clockStarted = true;
             }
 
-
             float distCovered = (Time.time - tripStartTime) * speed;
             float fracJourney = distCovered / journeyLength;
             transform.position = Vector3.Lerp(startPos, navTarget, fracJourney);
@@ -90,7 +82,8 @@ public class ScheduleBuilder : MonoBehaviour {
             {
                 moving = false;
                 clockStarted = false;
-                print("Trip was: " + distCovered + " units, and took: " + MathHelpers.FloatToTime(Time.time - tripStartTime));
+                TransferNavData();
+               // print("Trip was: " + distCovered + " units, and took: " + MathHelpers.FloatToTime(Time.time - tripStartTime));
             }
         }
     }
@@ -106,7 +99,7 @@ public class ScheduleBuilder : MonoBehaviour {
     }
     public void AddIn(ScheduleItem skedItem)
     {
-            agentSchedule.Add(skedItem);
+        agentSchedule.Add(skedItem);
         TransferNavData();
     }
 

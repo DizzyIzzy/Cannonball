@@ -22,35 +22,34 @@ public class BehaviorDriver : MonoBehaviour {
     public bool newDay =true;
     public bool homeNeedsGroceries = false;
 
-    public string plans;
-
     public AgentDataGrabber thisAgentData;
     // Use this for initialization
     void Start () {
-
         getTime();
-        thisAgentData = gameObject.GetComponent<AgentDataGrabber>();
-  
+     //   thisAgentData = gameObject.GetComponent<AgentDataGrabber>();
     }
 	
 	// Update is called once per frame
 	void Update () {
+        if (thisAgentData == null)
+        {
+            thisAgentData = gameObject.GetComponent<AgentDataGrabber>();
+        }
+        if (!hasWorkTimes && thisAgentData != null)
+        {
+            GetWorkTimes();
+        }
         if (calendarDay ==0 )
         { UpdateCalendar();
             PlanTheDay();
         }
         getTime();
-        if (!hasWorkTimes)
-        {
-            GetWorkTimes();
-        }
+
       
     }
     private void getTime()
     { 
-//        TOD = environment.GetComponent<CanadianRhythm>().timeOfDay;
         TOD = CanadianRhythm.timeOfDay;
-
         if (myCalendar == 0)
         {
             UpdateCalendar();
@@ -61,8 +60,6 @@ public class BehaviorDriver : MonoBehaviour {
             newDay = true;
             PlanTheDay();
         }
-    
-        
     }
 
     private void UpdateCalendar()
@@ -85,7 +82,6 @@ public class BehaviorDriver : MonoBehaviour {
         GetWorkTimes();
 
         int foodAtHome = thisAgentData.homePlaceTransform.GetComponent<LocationDataGrabber>().foodResource;
-
         int foodThreshold = thisAgentData.homePlaceTransform.GetComponent<LocationDataGrabber>().foodThreshold;
         if (foodAtHome < foodThreshold)
         {
@@ -127,10 +123,24 @@ public class BehaviorDriver : MonoBehaviour {
             ScheduleItem hopper1 = BuildScheduleItem(leaveHome, "Leave Home", thisAgentData.homePlaceTransform.position, thisAgentData.workPlaceTransform.position, 1);
      
             gameObject.GetComponent<ScheduleBuilder>().AddIn(hopper1);
-            ScheduleItem hopper2 = BuildScheduleItem(leaveWork, "Leave Work", thisAgentData.workPlaceTransform.position, thisAgentData.homePlaceTransform.position, 1);
-            gameObject.GetComponent<ScheduleBuilder>().AddIn(hopper2);
 
-            //execute physical movements
+            if (!homeNeedsGroceries)
+            {
+                ScheduleItem hopper2 = BuildScheduleItem(leaveWork, "Leave Work to Home", thisAgentData.workPlaceTransform.position, thisAgentData.homePlaceTransform.position, 1);
+                gameObject.GetComponent<ScheduleBuilder>().AddIn(hopper2);
+            }
+            else
+            {
+                //uses hard code location for grocery - need to change to data driven
+                ScheduleItem hopper3 = BuildScheduleItem(leaveWork, "Leave Work to Grocery", thisAgentData.workPlaceTransform.position, new Vector3 (8,0,7), 1);
+                gameObject.GetComponent<ScheduleBuilder>().AddIn(hopper3);
+                //uses hard code location for grocery - need to change to data driven
+                //uses hard code time for grocery time duration - need to change to data driven
+                ScheduleItem hopper4 = BuildScheduleItem(leaveWork+.5f, "Leave Groc to Home", new Vector3(8, 0, 7), thisAgentData.homePlaceTransform.position, 1);
+                gameObject.GetComponent<ScheduleBuilder>().AddIn(hopper4);
+            }
+
+         
         }
         else
         {

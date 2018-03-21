@@ -16,7 +16,7 @@ public class AgentDataGrabber : MonoBehaviour {
     public bool workFound;
     public bool homeFound;
     public bool distCalculated;
-    private FloatingFlag flagPole;
+    
     private GameObject locationLibrary;
     public float commuteDistance;
 
@@ -29,8 +29,7 @@ public class AgentDataGrabber : MonoBehaviour {
     void Start () {
       
         locationLibrary = GameObject.Find("Locations");
-        flagPole = gameObject.GetComponentInChildren<FloatingFlag>();
-        flagText = flagPole.flagText;
+    
         agentName = agentData.cannonAgent;
         gameObject.name = agentName;
         flagText.text = agentName;
@@ -39,15 +38,7 @@ public class AgentDataGrabber : MonoBehaviour {
     
         workPlaceTransform = locationLibrary.transform.Find(agentWorksAt);
         homePlaceTransform = locationLibrary.transform.Find(agentLivesAt);
-
-
-    //TODO
-    //find workplace as gameObject
-    //get location of work as vector
-
-    //get location of home as vector
-    //calculate commute
-}
+        }
 
     // Update is called once per frame
     void Update()

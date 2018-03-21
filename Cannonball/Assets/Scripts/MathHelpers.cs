@@ -69,7 +69,7 @@ public class MathHelpers : MonoBehaviour
             case 6:
                 weekday = "Saturday";
                 break;
-            case 7:
+            case 0:
                 weekday = "Sunday";
                 break;
             default:
