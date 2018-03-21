@@ -14,7 +14,6 @@ public class MathHelpers : MonoBehaviour
         float seconds = minutes * 100 - Mathf.Floor(minutes * 100);
         int secondsInt = Mathf.FloorToInt(seconds * 60f);
 
-
         string outputString = hour.ToString("00") + ":" + minuteInt.ToString("00") + ":" + secondsInt.ToString("00");
         return outputString;
     }

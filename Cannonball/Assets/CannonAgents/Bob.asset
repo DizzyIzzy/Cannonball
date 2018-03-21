@@ -9,12 +9,22 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: edf1632dc9cbfb045a203fee52d44151, type: 3}
-  m_Name: 002
+  m_Name: Bob
   m_EditorClassIdentifier: 
-  cannonAgent: Bob
+  cannonAgentSerial: 2
+  cannonAgentName: Bob
+  socialDrive: 4
+  extroversion: 0
+  libido: 0
   gymDrive: 1
   beachDrive: 1
   homePlace: Home1
   workPlace: Work2
   sleepDrive: 7
   punctuality: 9
+  cashResource: 0
+  licensePlate: 
+  cellPhoneNumber: 
+  bodyWaste: 0
+  foodCargo: 0
+  partner: {fileID: 11400000, guid: 6560e4728d286814db7d0c523c3f6288, type: 2}

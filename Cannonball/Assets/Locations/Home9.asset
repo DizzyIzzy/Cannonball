@@ -16,6 +16,6 @@ MonoBehaviour:
   yPos: 7
   workStart: 0
   workEnd: 0
-  foodStores: 0
+  foodStores: 45
   wasteAccumulation: 0
   cashReserve: 0

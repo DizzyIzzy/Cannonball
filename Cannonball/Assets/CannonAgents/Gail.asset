@@ -11,7 +11,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: edf1632dc9cbfb045a203fee52d44151, type: 3}
   m_Name: Gail
   m_EditorClassIdentifier: 
-  cannonAgent: Gail
+  cannonAgentSerial: 7
+  cannonAgentName: Gail
+  socialDrive: 0
+  extroversion: 0
+  libido: 0
   gymDrive: 8
   beachDrive: 0
   homePlace: Home5
@@ -19,5 +23,8 @@ MonoBehaviour:
   sleepDrive: 0
   punctuality: 0
   cashResource: 0
+  licensePlate: 
+  cellPhoneNumber: 
   bodyWaste: 0
   foodCargo: 0
+  partner: {fileID: 0}

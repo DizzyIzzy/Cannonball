@@ -9,12 +9,22 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: edf1632dc9cbfb045a203fee52d44151, type: 3}
-  m_Name: 001
+  m_Name: Alice
   m_EditorClassIdentifier: 
-  cannonAgent: Alice
+  cannonAgentSerial: 1
+  cannonAgentName: Alice
+  socialDrive: 6
+  extroversion: 0
+  libido: 0
   gymDrive: 5
   beachDrive: 1
   homePlace: Home1
   workPlace: Work1
   sleepDrive: 8
   punctuality: 1
+  cashResource: 0
+  licensePlate: 
+  cellPhoneNumber: 
+  bodyWaste: 0
+  foodCargo: 0
+  partner: {fileID: 11400000, guid: decdb54bc490ce347946edc6a58aa3a6, type: 2}

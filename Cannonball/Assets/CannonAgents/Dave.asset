@@ -11,7 +11,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: edf1632dc9cbfb045a203fee52d44151, type: 3}
   m_Name: Dave
   m_EditorClassIdentifier: 
-  cannonAgent: Dave
+  cannonAgentSerial: 4
+  cannonAgentName: Dave
+  socialDrive: 8
+  extroversion: 0
+  libido: 0
   gymDrive: 0
   beachDrive: 0
   homePlace: Home10
@@ -19,5 +23,8 @@ MonoBehaviour:
   sleepDrive: 0
   punctuality: 0
   cashResource: 0
+  licensePlate: CA 345TRD
+  cellPhoneNumber: 235-785-1712
   bodyWaste: 0
   foodCargo: 0
+  partner: {fileID: 11400000, guid: b9b6d355378ef3146a651b39b687a041, type: 2}

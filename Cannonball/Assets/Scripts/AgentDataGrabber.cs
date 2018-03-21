@@ -6,16 +6,22 @@ using UnityEngine.UI;
 public class AgentDataGrabber : MonoBehaviour {
   
     public Text flagText;
-    public AgentTemplate1 agentData;
+    public AgentTemplate agentData;
+    public AgentTemplate partnerData;
+
     public string agentName;
     public string agentWorksAt;
     public string agentLivesAt;
+    public float socialDrive;
+    public string partnerName;
     public Vector3 positionData;
     public Vector3 homeAddress;
     public Vector3 workAddress;
+    public Vector3 partnerPosition;
     public bool workFound;
     public bool homeFound;
     public bool distCalculated;
+    public bool hasPartner;
     
     private GameObject locationLibrary;
     public float commuteDistance;
@@ -23,6 +29,8 @@ public class AgentDataGrabber : MonoBehaviour {
     public Transform workPlaceTransform;
     public Transform homePlaceTransform;
 
+    public Transform partnerTransform;
+    bool partnerInfo=false;
 
     // Use this for initialization
 
@@ -30,12 +38,17 @@ public class AgentDataGrabber : MonoBehaviour {
       
         locationLibrary = GameObject.Find("Locations");
     
-        agentName = agentData.cannonAgent;
+        agentName = agentData.cannonAgentName;
         gameObject.name = agentName;
         flagText.text = agentName;
         agentWorksAt = agentData.workPlace;
         agentLivesAt = agentData.homePlace;
-    
+        socialDrive = agentData.socialDrive;
+        if (partnerData != null)
+        {
+            hasPartner = true;
+            partnerName = partnerData.cannonAgentName;
+        }
         workPlaceTransform = locationLibrary.transform.Find(agentWorksAt);
         homePlaceTransform = locationLibrary.transform.Find(agentLivesAt);
         }
@@ -43,12 +56,25 @@ public class AgentDataGrabber : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        if (workPlaceTransform == null)
+        if (workPlaceTransform == null || workPlaceTransform ==null)
         {
             workPlaceTransform = locationLibrary.transform.Find(agentWorksAt);
+            homePlaceTransform = locationLibrary.transform.Find(agentLivesAt);
         }
 
-        homePlaceTransform = locationLibrary.transform.Find(agentLivesAt);
+   
+        if (partnerInfo == false)
+        {
+            if (partnerData != null)
+            {
+                partnerTransform = GameObject.Find(partnerName).transform;
+                partnerPosition = partnerTransform.position;
+                hasPartner = true;
+                partnerInfo = true;
+            }
+        }
+       
+
         if (workAddress == Vector3.zero)
         {
             GetWorkAddress();

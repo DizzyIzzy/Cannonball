@@ -6,7 +6,8 @@ using UnityEngine.UI;
 public class CanadianRhythm : MonoBehaviour {
     private float startTime;
     public float elapsedTime;
-    public float timeScale =100 ;
+
+    public static float timeScale;
     public static int calendarDay;
     public static int dayOfWeek;
     public static float timeOfDay;
@@ -19,12 +20,14 @@ public class CanadianRhythm : MonoBehaviour {
     }
     void Start () {
         calendarDay=1;
+        timeScale = 4;
     }
 	
 	// Update is called once per frame
 	void Update () {
+       
         elapsedTime = (Time.time - startTime) ;
-        timeOfDay = (elapsedTime*timeScale) % (24 );
+        timeOfDay = (elapsedTime*timeScale) % (24 ) ;
         calendarDay = Mathf.CeilToInt((elapsedTime * timeScale) / 24);
         dayOfWeek = calendarDay % 7;
     }
@@ -44,5 +47,6 @@ public class CanadianRhythm : MonoBehaviour {
     {
         return calendarDay;
     }
-     
+  
+
 }

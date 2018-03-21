@@ -11,7 +11,6 @@ public class ScheduleBuilder : MonoBehaviour {
     public Vector3 startPos;
     public Vector3 navTarget;
     
-
     public float speed = 100F;
     private float tripStartTime;
     private float journeyLength;
@@ -20,16 +19,14 @@ public class ScheduleBuilder : MonoBehaviour {
     
     private void Start()
     {
-        
-        
+                
     }
 
         private void Update()
     {
         TOD = CanadianRhythm.timeOfDay;
         executeMove();
-        if (agentSchedule.Count>0)
-          
+        if (agentSchedule.Count>0)          
         {
             nextMove = agentSchedule[0].action.ToString() + " @ " + MathHelpers.FloatToTime(agentSchedule[0].eventTime);
             checkHopper();
@@ -63,8 +60,7 @@ public class ScheduleBuilder : MonoBehaviour {
     }
 
     private void executeMove()
-    {
- 
+    { 
         if (moving == true)
         {
             if (clockStarted == false)
@@ -102,7 +98,5 @@ public class ScheduleBuilder : MonoBehaviour {
         agentSchedule.Add(skedItem);
         TransferNavData();
     }
-
-
-
+    
 }

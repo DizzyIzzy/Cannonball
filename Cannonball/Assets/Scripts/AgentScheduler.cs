@@ -3,12 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class BehaviorDriver : MonoBehaviour {
+public class AgentScheduler : MonoBehaviour {
    
-    public int hunger;
-    public int fatigue;
-    public int bladder;
-    public int social;
     public int homeHasGroceries;
     public float commute;
     public float workStart;
@@ -26,8 +22,7 @@ public class BehaviorDriver : MonoBehaviour {
     // Use this for initialization
     void Start () {
         getTime();
-     //   thisAgentData = gameObject.GetComponent<AgentDataGrabber>();
-    }
+     }
 	
 	// Update is called once per frame
 	void Update () {
@@ -90,7 +85,7 @@ public class BehaviorDriver : MonoBehaviour {
 
         string dailySkedsTring = BuildSchedule(thisAgentData.agentName, workStart, workEnd, homeNeedsGroceries, false, false);
         print (dailySkedsTring);
-        
+        TextfileHandler.WriteString(dailySkedsTring);
         myCalendar = calendarDay;
         newDay = false;
     }

@@ -395,6 +395,33 @@ CanvasRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 754023344}
   m_GameObject: {fileID: 222712006}
+--- !u!1 &252512595 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1256166812367064, guid: 15eebbd64b049b94ba98c80dcb6d2496,
+    type: 2}
+  m_PrefabInternal: {fileID: 1358788671}
+--- !u!114 &252512602
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 252512595}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c25d8fef86c02e45861735e4d4c754e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  thisAgentData: {fileID: 0}
+  socialDrive: 0
+  socialState: 0
+  socialThreshold: 0
+  partnerName: 
+  partnerDistance: 0
+  cashResource: 0
+  foodCargo: 0
+  stepTime: 0
+  hasPartner: 0
+  partnerPos: {x: 0, y: 0, z: 0}
 --- !u!114 &285844231 stripped
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 114982443015497128, guid: 15eebbd64b049b94ba98c80dcb6d2496,
@@ -410,6 +437,7 @@ GameObject:
   m_Component:
   - component: {fileID: 297863568}
   - component: {fileID: 297863567}
+  - component: {fileID: 297863569}
   m_Layer: 5
   m_Name: Environment Controller
   m_TagString: Untagged
@@ -429,7 +457,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   elapsedTime: 0
-  timeScale: 3
 --- !u!224 &297863568
 RectTransform:
   m_ObjectHideFlags: 0
@@ -448,6 +475,17 @@ RectTransform:
   m_AnchoredPosition: {x: 633, y: 216.00002}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &297863569
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 297863566}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8db9c7eb8f5f77c4ab41253471b53805, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &301252353
 Prefab:
   m_ObjectHideFlags: 0
@@ -502,6 +540,10 @@ Prefab:
       propertyPath: flagText
       value: 
       objectReference: {fileID: 874811653}
+    - target: {fileID: 1256166812367064, guid: 15eebbd64b049b94ba98c80dcb6d2496, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 15eebbd64b049b94ba98c80dcb6d2496, type: 2}
   m_IsPrefabParent: 0
@@ -803,6 +845,60 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 1892878603}
   m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+--- !u!1 &583007647 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1256166812367064, guid: 15eebbd64b049b94ba98c80dcb6d2496,
+    type: 2}
+  m_PrefabInternal: {fileID: 1892878603}
+--- !u!114 &583007654
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 583007647}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c25d8fef86c02e45861735e4d4c754e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  thisAgentData: {fileID: 0}
+  socialDrive: 0
+  socialState: 0
+  socialThreshold: 0
+  partnerName: 
+  partnerDistance: 0
+  cashResource: 0
+  foodCargo: 0
+  stepTime: 0
+  hasPartner: 0
+  partnerPos: {x: 0, y: 0, z: 0}
+--- !u!1 &605254827 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1256166812367064, guid: 15eebbd64b049b94ba98c80dcb6d2496,
+    type: 2}
+  m_PrefabInternal: {fileID: 1997414181}
+--- !u!114 &605254834
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 605254827}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c25d8fef86c02e45861735e4d4c754e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  thisAgentData: {fileID: 0}
+  socialDrive: 0
+  socialState: 0
+  socialThreshold: 0
+  partnerName: 
+  partnerDistance: 0
+  cashResource: 0
+  foodCargo: 0
+  stepTime: 0
+  hasPartner: 0
+  partnerPos: {x: 0, y: 0, z: 0}
 --- !u!1 &650166807
 GameObject:
   m_ObjectHideFlags: 0
@@ -828,11 +924,11 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 875201715}
   - {fileID: 1419990720}
   - {fileID: 1121250001}
-  - {fileID: 1170873539}
   - {fileID: 34847762}
+  - {fileID: 875201715}
+  - {fileID: 1170873539}
   - {fileID: 900664504}
   - {fileID: 1225738771}
   m_Father: {fileID: 0}
@@ -890,6 +986,33 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 814f49b3d8b7bba4e8e80a5b1915f31a, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &735476252 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1256166812367064, guid: 15eebbd64b049b94ba98c80dcb6d2496,
+    type: 2}
+  m_PrefabInternal: {fileID: 1626584228}
+--- !u!114 &735476259
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 735476252}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c25d8fef86c02e45861735e4d4c754e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  thisAgentData: {fileID: 0}
+  socialDrive: 0
+  socialState: 0
+  socialThreshold: 0
+  partnerName: 
+  partnerDistance: 0
+  cashResource: 0
+  foodCargo: 0
+  stepTime: 0
+  hasPartner: 0
+  partnerPos: {x: 0, y: 0, z: 0}
 --- !u!1001 &754023344
 Prefab:
   m_ObjectHideFlags: 0
@@ -1020,6 +1143,33 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 814f49b3d8b7bba4e8e80a5b1915f31a, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &908974889 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1256166812367064, guid: 15eebbd64b049b94ba98c80dcb6d2496,
+    type: 2}
+  m_PrefabInternal: {fileID: 2067509835}
+--- !u!114 &908974896
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 908974889}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c25d8fef86c02e45861735e4d4c754e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  thisAgentData: {fileID: 0}
+  socialDrive: 0
+  socialState: 0
+  socialThreshold: 0
+  partnerName: 
+  partnerDistance: 0
+  cashResource: 0
+  foodCargo: 0
+  stepTime: 0
+  hasPartner: 0
+  partnerPos: {x: 0, y: 0, z: 0}
 --- !u!4 &1121250001 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4058894029273338, guid: 15eebbd64b049b94ba98c80dcb6d2496,
@@ -1062,7 +1212,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4058894029273338, guid: 15eebbd64b049b94ba98c80dcb6d2496, type: 2}
       propertyPath: m_RootOrder
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1256166812367064, guid: 15eebbd64b049b94ba98c80dcb6d2496, type: 2}
       propertyPath: m_Name
@@ -1079,6 +1229,16 @@ Prefab:
       propertyPath: flagText
       value: 
       objectReference: {fileID: 285844231}
+    - target: {fileID: 114950314275268042, guid: 15eebbd64b049b94ba98c80dcb6d2496,
+        type: 2}
+      propertyPath: partnerData
+      value: 
+      objectReference: {fileID: 11400000, guid: 936d1bc0767df0545a269671c955e3c8,
+        type: 2}
+    - target: {fileID: 1256166812367064, guid: 15eebbd64b049b94ba98c80dcb6d2496, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 15eebbd64b049b94ba98c80dcb6d2496, type: 2}
   m_IsPrefabParent: 0
@@ -1347,7 +1507,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4058894029273338, guid: 15eebbd64b049b94ba98c80dcb6d2496, type: 2}
       propertyPath: m_RootOrder
-      value: 4
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1256166812367064, guid: 15eebbd64b049b94ba98c80dcb6d2496, type: 2}
       propertyPath: m_Name
@@ -1364,6 +1524,10 @@ Prefab:
       propertyPath: flagText
       value: 
       objectReference: {fileID: 2098396407}
+    - target: {fileID: 1256166812367064, guid: 15eebbd64b049b94ba98c80dcb6d2496, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 15eebbd64b049b94ba98c80dcb6d2496, type: 2}
   m_IsPrefabParent: 0
@@ -1455,6 +1619,33 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a58752dce7f0edc48b24f736013bf7f3, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &1613270633 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1256166812367064, guid: 15eebbd64b049b94ba98c80dcb6d2496,
+    type: 2}
+  m_PrefabInternal: {fileID: 1150421035}
+--- !u!114 &1613270640
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1613270633}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c25d8fef86c02e45861735e4d4c754e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  thisAgentData: {fileID: 0}
+  socialDrive: 0
+  socialState: 0
+  socialThreshold: 0
+  partnerName: 
+  partnerDistance: 0
+  cashResource: 0
+  foodCargo: 0
+  stepTime: 0
+  hasPartner: 0
+  partnerPos: {x: 0, y: 0, z: 0}
 --- !u!1001 &1626584228
 Prefab:
   m_ObjectHideFlags: 0
@@ -1492,7 +1683,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4058894029273338, guid: 15eebbd64b049b94ba98c80dcb6d2496, type: 2}
       propertyPath: m_RootOrder
-      value: 0
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1256166812367064, guid: 15eebbd64b049b94ba98c80dcb6d2496, type: 2}
       propertyPath: m_Name
@@ -1509,6 +1700,16 @@ Prefab:
       propertyPath: flagText
       value: 
       objectReference: {fileID: 105091020}
+    - target: {fileID: 1256166812367064, guid: 15eebbd64b049b94ba98c80dcb6d2496, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114950314275268042, guid: 15eebbd64b049b94ba98c80dcb6d2496,
+        type: 2}
+      propertyPath: partnerData
+      value: 
+      objectReference: {fileID: 11400000, guid: b9b6d355378ef3146a651b39b687a041,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 15eebbd64b049b94ba98c80dcb6d2496, type: 2}
   m_IsPrefabParent: 0
@@ -1683,6 +1884,33 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 2067509835}
   m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+--- !u!1 &1699957898 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1256166812367064, guid: 15eebbd64b049b94ba98c80dcb6d2496,
+    type: 2}
+  m_PrefabInternal: {fileID: 301252353}
+--- !u!114 &1699957905
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1699957898}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c25d8fef86c02e45861735e4d4c754e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  thisAgentData: {fileID: 0}
+  socialDrive: 0
+  socialState: 0
+  socialThreshold: 0
+  partnerName: 
+  partnerDistance: 0
+  cashResource: 0
+  foodCargo: 0
+  stepTime: 0
+  hasPartner: 0
+  partnerPos: {x: 0, y: 0, z: 0}
 --- !u!4 &1706362958 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4023615634439140, guid: 814f49b3d8b7bba4e8e80a5b1915f31a,
@@ -1795,7 +2023,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4058894029273338, guid: 15eebbd64b049b94ba98c80dcb6d2496, type: 2}
       propertyPath: m_RootOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114950314275268042, guid: 15eebbd64b049b94ba98c80dcb6d2496,
         type: 2}
@@ -1808,6 +2036,16 @@ Prefab:
       propertyPath: flagText
       value: 
       objectReference: {fileID: 562575443}
+    - target: {fileID: 114950314275268042, guid: 15eebbd64b049b94ba98c80dcb6d2496,
+        type: 2}
+      propertyPath: partnerData
+      value: 
+      objectReference: {fileID: 11400000, guid: decdb54bc490ce347946edc6a58aa3a6,
+        type: 2}
+    - target: {fileID: 1256166812367064, guid: 15eebbd64b049b94ba98c80dcb6d2496, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 15eebbd64b049b94ba98c80dcb6d2496, type: 2}
   m_IsPrefabParent: 0
@@ -1865,6 +2103,10 @@ Prefab:
       propertyPath: flagText
       value: 
       objectReference: {fileID: 2059874634}
+    - target: {fileID: 1256166812367064, guid: 15eebbd64b049b94ba98c80dcb6d2496, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 15eebbd64b049b94ba98c80dcb6d2496, type: 2}
   m_IsPrefabParent: 0
@@ -1963,7 +2205,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4058894029273338, guid: 15eebbd64b049b94ba98c80dcb6d2496, type: 2}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1256166812367064, guid: 15eebbd64b049b94ba98c80dcb6d2496, type: 2}
       propertyPath: m_Name
@@ -1980,6 +2222,16 @@ Prefab:
       propertyPath: flagText
       value: 
       objectReference: {fileID: 1673877468}
+    - target: {fileID: 114950314275268042, guid: 15eebbd64b049b94ba98c80dcb6d2496,
+        type: 2}
+      propertyPath: partnerData
+      value: 
+      objectReference: {fileID: 11400000, guid: 6560e4728d286814db7d0c523c3f6288,
+        type: 2}
+    - target: {fileID: 1256166812367064, guid: 15eebbd64b049b94ba98c80dcb6d2496, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 15eebbd64b049b94ba98c80dcb6d2496, type: 2}
   m_IsPrefabParent: 0

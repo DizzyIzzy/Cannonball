@@ -286,8 +286,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\AgentDataGrabber.cs" />
-    <Compile Include="Assets\Scripts\AgentTemplate1.cs" />
-    <Compile Include="Assets\Scripts\BehaviorDriver.cs" />
+    <Compile Include="Assets\Scripts\AgentMazlow.cs" />
+    <Compile Include="Assets\Scripts\AgentScheduler.cs" />
+    <Compile Include="Assets\Scripts\AgentTemplate.cs" />
     <Compile Include="Assets\Scripts\CanadianRhythm.cs" />
     <Compile Include="Assets\Scripts\FloatingFlag.cs" />
     <Compile Include="Assets\Scripts\LocationDataGrabber.cs" />
@@ -296,6 +297,17 @@
     <Compile Include="Assets\Scripts\MovementController.cs" />
     <Compile Include="Assets\Scripts\ScheduleBuilder.cs" />
     <Compile Include="Assets\Scripts\ScheduleItem.cs" />
+    <Compile Include="Assets\Scripts\TextfileHandler.cs" />
+    <Compile Include="Assets\TextTester.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\TextFiles\AlicePhoneRecord.txt" />
+    <None Include="Assets\TextFiles\BobPhoneRecord.txt" />
+    <None Include="Assets\TextFiles\DavePhoneRecord.txt" />
+    <None Include="Assets\TextFiles\EvePhoneRecord.txt" />
+    <None Include="Assets\TextFiles\commuter.txt" />
+    <None Include="Assets\TextFiles\credit.txt" />
+    <None Include="Assets\TextFiles\phoneRecord.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />

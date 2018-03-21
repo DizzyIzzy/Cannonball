@@ -9,9 +9,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: edf1632dc9cbfb045a203fee52d44151, type: 3}
-  m_Name: 003
+  m_Name: Eve
   m_EditorClassIdentifier: 
-  cannonAgent: Eve
+  cannonAgentSerial: 5
+  cannonAgentName: Eve
+  socialDrive: 8
+  extroversion: 0
+  libido: 0
   gymDrive: 1
   beachDrive: 1
   homePlace: Home7
@@ -19,5 +23,8 @@ MonoBehaviour:
   sleepDrive: 7
   punctuality: 9
   cashResource: 0
+  licensePlate: WA UIT 213
+  cellPhoneNumber: 555-831-8242
   bodyWaste: 0
   foodCargo: 0
+  partner: {fileID: 11400000, guid: 936d1bc0767df0545a269671c955e3c8, type: 2}
