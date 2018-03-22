@@ -285,6 +285,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\RealTimeSpeedClock.cs" />
     <Compile Include="Assets\Scripts\AgentDataGrabber.cs" />
     <Compile Include="Assets\Scripts\AgentMazlow.cs" />
     <Compile Include="Assets\Scripts\AgentScheduler.cs" />
