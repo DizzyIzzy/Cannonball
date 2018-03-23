@@ -6,10 +6,13 @@ using System;
 public class SimulationEpochClock : MonoBehaviour {
     public DateTime startDateTime;
     public static DateTime gameDateTime;
+    
+    public static float simDeltaTime;
 
     public float startTimeFloat;
+    public float simDeltaTimeFloat;
     public float elapsedTime;
-    public float timeFactor;
+    public static float timeFactor;
 
     public string gameDateString;
     public TimeSpan simElapsed;
@@ -21,18 +24,23 @@ public class SimulationEpochClock : MonoBehaviour {
     void Start () {
         startDateTime = DateTime.Now;
         startTimeFloat = Time.time;
-        
+        gameDateTime = startDateTime;
     }
 	
 	// Update is called once per frame
 	void Update () {
         float timeIncrement = (Time.deltaTime) * timeFactor;
+        DateTime simDeltaBase = gameDateTime; 
+
         elapsedTime = elapsedTime + timeIncrement;
         double elapseDouble = elapsedTime;
         gameDateTime = startDateTime.AddSeconds(elapseDouble);
         gameDateString = gameDateTime.ToString();
+        simDeltaTime = ((float)(gameDateTime.Subtract(simDeltaBase)).TotalMilliseconds)/1000f;
+        simDeltaTimeFloat = simDeltaTime;
         simElapsed = gameDateTime.Subtract(startDateTime);
         simElapsedString = simElapsed.ToString();
+        
             }
     public void AdjustTimeFactor(float timeSlider)
     {
@@ -43,8 +51,8 @@ public class SimulationEpochClock : MonoBehaviour {
     void OnGUI()
     {
         guiStyle.fontSize = 20;
-        GUI.Label(new Rect(20, 50, 1000, 20), (gameDateTime.DayOfWeek.ToString()+ ", " + gameDateString));
-        GUI.Label(new Rect(20, 80, 1000, 20), ("Elapsed simulation "  + simElapsed.TotalDays.ToString("000") + " / "+ simElapsedString));
+        GUI.Label(new Rect(20, 10, 1000, 20), (gameDateTime.DayOfWeek.ToString()+ ", " + gameDateString),guiStyle);
+        GUI.Label(new Rect(20, 40, 1000, 20), ("Elapsed simulation "  + simElapsed.TotalDays.ToString("000") + " / "+ simElapsedString));
 
     }
 

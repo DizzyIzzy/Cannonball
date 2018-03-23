@@ -1,11 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class AgentMazlow : MonoBehaviour {
     public AgentDataGrabber thisAgentData;
     private Transform partnerTransform;
-
+    public DateTime lastCall;
     public float socialDrive;
     public float socialState;
     public float socialThreshold;
@@ -45,7 +46,7 @@ public class AgentMazlow : MonoBehaviour {
                 hasPartner = true;
             }
         }
-        stepTime = Time.deltaTime;
+        stepTime = Mathf.Clamp(SimulationEpochClock.simDeltaTime * 0.001f,0,500);
         if (hasPartner)
         {
             partnerDistance = Vector3.Distance(transform.position, partnerPos);
@@ -55,18 +56,19 @@ public class AgentMazlow : MonoBehaviour {
 
         void lonelyJack()
         {
-        socialState = socialState - (socialDrive * stepTime * CanadianRhythm.timeScale);
+       socialState = socialState - (socialDrive * stepTime);
         if (socialState < socialThreshold)
         {
             partnerPos = thisAgentData.partnerPosition;
             partnerDistance = Vector3.Distance(transform.position, partnerPos);
             if (partnerDistance<1)
             {
-                socialState = socialState + (2 * stepTime * CanadianRhythm.timeScale);
+                socialState = socialState + (stepTime);
             }
 
             if (hasPartner)
             {
+                
                 PhoneAFriend();
             }
         }
@@ -75,12 +77,14 @@ public class AgentMazlow : MonoBehaviour {
     
         void PhoneAFriend()
     {
-        string callLog =(thisAgentData.agentName + " calls " + partnerName + " at " + MathHelpers.FloatToTime(CanadianRhythm.timeOfDay));
+        
+        string callDateTime = SimulationEpochClock.gameDateTime.ToLocalTime().ToString();
+        string callLog =(thisAgentData.agentName + " called " + partnerName + " at " + callDateTime);
         TextfileHandler.PhoneLog(callLog, thisAgentData.agentName);
+        lastCall = SimulationEpochClock.gameDateTime;
         print(callLog);
         socialState = socialState + MathHelpers.Fuzzify(100);
         float partnerSocialState = partnerTransform.GetComponent<AgentMazlow>().socialState;
         partnerSocialState = partnerSocialState + MathHelpers.Fuzzify(50);
-
     }
 }
