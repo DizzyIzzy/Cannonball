@@ -13,9 +13,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   locationName: Work2
   xPos: 16
-  yPos: 10
-  workStart: 8
-  workEnd: 16
+  zPos: 10
+  workStartFloat: 9
+  workEndFloat: 17
   foodStores: 300
   wasteAccumulation: 0
   cashReserve: 0

@@ -13,9 +13,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   locationName: Home10
   xPos: 12
-  yPos: 15
-  workStart: 0
-  workEnd: 0
+  zPos: 15
   foodStores: 25
   wasteAccumulation: 0
   cashReserve: 0

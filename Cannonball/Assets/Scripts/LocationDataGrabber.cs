@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System;
 
 public class LocationDataGrabber : MonoBehaviour {
     public Text text;
@@ -9,8 +10,16 @@ public class LocationDataGrabber : MonoBehaviour {
     public string locName;
     public Vector3 positionData;
     public Transform locationTransform;
-    public float workStartTime;
-    public float workEndTime;
+    
+    public TimeSpan workStartTime;
+  
+
+    public TimeSpan workEndTime;
+    public TimeSpan workStart;
+    public string workStartString;
+    public string workEndString;
+    public TimeSpan workEnd;
+
     public List<string> occupants = new List<string>();
 
     public int foodResource;
@@ -20,10 +29,15 @@ public class LocationDataGrabber : MonoBehaviour {
     void Start () {
         locName = locationData.locationName;
         text.text = locName;
-        positionData = new Vector3(locationData.xPos, 0, locationData.yPos);
+        positionData = new Vector3(locationData.xPos, 0, locationData.zPos);
         gameObject.transform.position = positionData;
-        workStartTime = locationData.workStart;
-        workEndTime = locationData.workEnd;
+        workStartTime = TimeSpan.FromHours(locationData.workStartFloat);
+
+        workEndTime = TimeSpan.FromHours(locationData.workEndFloat);
+
+        workStartString = workStartTime.ToString();
+        workEndString = workEndTime.ToString();
+
         foodResource = locationData.foodStores;
         foodThreshold = 8;
 
@@ -34,6 +48,7 @@ public class LocationDataGrabber : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
-	}
+       // workStartString = workStartTime.ToString();
+
+    }
 }

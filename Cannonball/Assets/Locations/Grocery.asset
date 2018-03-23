@@ -13,9 +13,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   locationName: Grocery
   xPos: 8
-  yPos: 7
-  workStart: 6
-  workEnd: 18
+  zPos: 7
+  workStartFloat: 6
+  workEndFloat: 21
   foodStores: 2000
   wasteAccumulation: 0
   cashReserve: 2000

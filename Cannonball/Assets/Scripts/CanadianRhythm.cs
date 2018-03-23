@@ -27,7 +27,7 @@ public class CanadianRhythm : MonoBehaviour {
     }
     void Start () {
         calendarDay=1;
-        timeScale = 4;
+        timeScale = 1;
     }
 	
 	// Update is called once per frame
@@ -42,10 +42,10 @@ public class CanadianRhythm : MonoBehaviour {
     }
 
     void OnGUI() {
-        string weekday = MathHelpers.DayOfTheWeek(dayOfWeek);
+    
         guiStyle.fontSize = 20;
         GUI.Label(new Rect(20, 10, 120, 20), ("TOD: " + MathHelpers.FloatToTime(timeOfDay)),guiStyle);
-        GUI.Label(new Rect(20, 30, 100, 20), ("Day: " + calendarDay.ToString()) + "/" + weekday, guiStyle);
+     //   GUI.Label(new Rect(20, 30, 100, 20), ("Day: " + calendarDay.ToString()) + "/" + weekday, guiStyle);
     }
 
     public static float GameTime()
@@ -56,6 +56,8 @@ public class CanadianRhythm : MonoBehaviour {
     {
         return calendarDay;
     }
+
+
   
 
 }

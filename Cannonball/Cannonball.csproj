@@ -285,7 +285,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\RealTimeSpeedClock.cs" />
     <Compile Include="Assets\Scripts\AgentDataGrabber.cs" />
     <Compile Include="Assets\Scripts\AgentMazlow.cs" />
     <Compile Include="Assets\Scripts\AgentScheduler.cs" />
@@ -296,12 +295,17 @@
     <Compile Include="Assets\Scripts\LocationTemplate.cs" />
     <Compile Include="Assets\Scripts\MathHelpers.cs" />
     <Compile Include="Assets\Scripts\MovementController.cs" />
+    <Compile Include="Assets\Scripts\Observation.cs" />
     <Compile Include="Assets\Scripts\ScheduleBuilder.cs" />
     <Compile Include="Assets\Scripts\ScheduleItem.cs" />
+    <Compile Include="Assets\Scripts\SimulationEpochClock.cs" />
     <Compile Include="Assets\Scripts\TextfileHandler.cs" />
+    <Compile Include="Assets\Scripts\WeatherGrabber.cs" />
     <Compile Include="Assets\TextTester.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Assets\StreamingAssets\apinotes.txt" />
+    <None Include="Assets\StreamingAssets\kmryObs.txt" />
     <None Include="Assets\TextFiles\AlicePhoneRecord.txt" />
     <None Include="Assets\TextFiles\BobPhoneRecord.txt" />
     <None Include="Assets\TextFiles\DavePhoneRecord.txt" />

@@ -1,24 +1,30 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 
 public class AgentScheduler : MonoBehaviour {
-   
+    public DateTime simTime;
     public int homeHasGroceries;
     public float commute;
-    public float workStart;
-    public float workEnd;
-    public int dayOfWeek;
-    public float TOD;
-    public int calendarDay;
-    public int myCalendar=0;
+    public TimeSpan workStart;
+    public TimeSpan workEnd;
+    
+//    public int dayOfWeek;
+    public TimeSpan TOD;
+    public DateTime date;
+ //   public int calendarDay;
+    public DateTime lastUpdate;
 
     private bool hasWorkTimes;
     public bool newDay =true;
     public bool homeNeedsGroceries = false;
 
     public AgentDataGrabber thisAgentData;
+
+
+
     // Use this for initialization
     void Start () {
         getTime();
@@ -34,8 +40,8 @@ public class AgentScheduler : MonoBehaviour {
         {
             GetWorkTimes();
         }
-        if (calendarDay ==0 )
-        { UpdateCalendar();
+        if (lastUpdate == null )
+        { 
             PlanTheDay();
         }
         getTime();
@@ -43,24 +49,20 @@ public class AgentScheduler : MonoBehaviour {
       
     }
     private void getTime()
-    { 
-        TOD = CanadianRhythm.timeOfDay;
-        if (myCalendar == 0)
+    {
+        simTime = SimulationEpochClock.gameDateTime;
+        TOD = simTime.TimeOfDay;
+        //TOD = CanadianRhythm.timeOfDay;
+        if (lastUpdate == null)
         {
-            UpdateCalendar();
+            PlanTheDay();
         }
         
-        if (myCalendar < CanadianRhythm.calendarDay && newDay == false)
+        if (lastUpdate.Date < simTime.Date && newDay == false)
         {
             newDay = true;
             PlanTheDay();
         }
-    }
-
-    private void UpdateCalendar()
-    {
-        calendarDay = CanadianRhythm.calendarDay;
-        dayOfWeek = (calendarDay % 7);
     }
 
     private void GetWorkTimes()
@@ -73,7 +75,7 @@ public class AgentScheduler : MonoBehaviour {
 
     private void PlanTheDay()
     {
-        UpdateCalendar();
+    
         GetWorkTimes();
 
         int foodAtHome = thisAgentData.homePlaceTransform.GetComponent<LocationDataGrabber>().foodResource;
@@ -86,25 +88,31 @@ public class AgentScheduler : MonoBehaviour {
         string dailySkedsTring = BuildSchedule(thisAgentData.agentName, workStart, workEnd, homeNeedsGroceries, false, false);
         print (dailySkedsTring);
         TextfileHandler.WriteString(dailySkedsTring);
-        myCalendar = calendarDay;
+        lastUpdate = simTime;
         newDay = false;
     }
 
-    private string BuildSchedule(string agentName, float workStart, float workEnd, bool needsGroceries, bool needsGas, bool wannaPlay)
+    private string BuildSchedule(string agentName, TimeSpan workStart, TimeSpan workEnd, bool needsGroceries, bool needsGas, bool wannaPlay)
     {
-        string outputSked = agentName + "'s plan, Day: " + calendarDay + ". ";
-        if (dayOfWeek < 5)
+        string outputSked = agentName + "'s plan, Day: " + simTime.ToShortDateString() + ". ";
+        if (!(simTime.DayOfWeek == DayOfWeek.Saturday || simTime.DayOfWeek == DayOfWeek.Sunday))
         {
-            float breakfast = workStart - MathHelpers.Fuzzify(.7f);
-            float lunch = breakfast + MathHelpers.Fuzzify(5f);
-            float dinner = lunch + MathHelpers.Fuzzify(5f, 10f);
-            float leaveHome = workStart - MathHelpers.Fuzzify(commute);
-            float leaveWork = MathHelpers.Fuzzify(workEnd);
-            string breakfastString = MathHelpers.FloatToTime(breakfast).ToString();
-            string leaveHomeString = MathHelpers.FloatToTime(leaveHome).ToString();
-            string lunchString = MathHelpers.FloatToTime(lunch).ToString();
-            string dinnerString = MathHelpers.FloatToTime(dinner).ToString();
-            string leaveWorkString = MathHelpers.FloatToTime(leaveWork).ToString();
+            TimeSpan breakfast = MathHelpers.FuzzyTime(workStart.Subtract(TimeSpan.FromHours(.75)),13);
+            //TimeSpan lunch = MathHelpers.FuzzyTime(workStart.Add(TimeSpan.FromHours(5)), 20);
+            //TimeSpan dinner = MathHelpers.FuzzyTime(lunch.Add(TimeSpan.FromHours(5)), 25); 
+            //TimeSpan leaveHome = MathHelpers.FuzzyTime(workStart.Subtract(TimeSpan.FromMinutes(commute)), 4); 
+            TimeSpan leaveWork = MathHelpers.FuzzyTime(workEnd, 4);
+
+            //TimeSpan breakfast = workStart;
+            TimeSpan lunch = workStart;
+            TimeSpan dinner = workStart;
+            TimeSpan leaveHome = workStart;
+            //TimeSpan leaveWork = workEnd;
+            string breakfastString = (breakfast).ToString();
+            string leaveHomeString = (leaveHome).ToString();
+            string lunchString = (lunch).ToString();
+            string dinnerString = (dinner).ToString();
+            string leaveWorkString = (leaveWork).ToString();
             if (homeNeedsGroceries)
             {
                 leaveWorkString = leaveWorkString + " and get groceries";
@@ -131,7 +139,7 @@ public class AgentScheduler : MonoBehaviour {
                 gameObject.GetComponent<ScheduleBuilder>().AddIn(hopper3);
                 //uses hard code location for grocery - need to change to data driven
                 //uses hard code time for grocery time duration - need to change to data driven
-                ScheduleItem hopper4 = BuildScheduleItem(leaveWork+.5f, "Leave Groc to Home", new Vector3(8, 0, 7), thisAgentData.homePlaceTransform.position, 1);
+                ScheduleItem hopper4 = BuildScheduleItem(leaveWork.Add(TimeSpan.FromHours(.5f)), "Leave Groc to Home", new Vector3(8, 0, 7), thisAgentData.homePlaceTransform.position, 1);
                 gameObject.GetComponent<ScheduleBuilder>().AddIn(hopper4);
             }
 
@@ -163,7 +171,7 @@ public class AgentScheduler : MonoBehaviour {
     }
 
 
-    private ScheduleItem BuildScheduleItem(float eventTime, string eventName, Vector3 from, Vector3 to, int priority )
+    private ScheduleItem BuildScheduleItem(TimeSpan eventTime, string eventName, Vector3 from, Vector3 to, int priority )
     {
         ScheduleItem newScheduleItem = new ScheduleItem( eventTime,  eventName,  from,  to,  priority);
         return newScheduleItem;

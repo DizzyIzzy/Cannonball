@@ -13,9 +13,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   locationName: Beach
   xPos: 19
-  yPos: 19
-  workStart: 0
-  workEnd: 0
+  zPos: 19
   foodStores: 1000
   wasteAccumulation: 0
   cashReserve: 0

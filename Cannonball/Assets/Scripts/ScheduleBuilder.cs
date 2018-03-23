@@ -1,12 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class ScheduleBuilder : MonoBehaviour {
     public List<ScheduleItem> agentSchedule = new List<ScheduleItem>();
 
     public string nextMove;
-    public float TOD;
+    public DateTime simTime;
+   // public float TOD;
 
     public Vector3 startPos;
     public Vector3 navTarget;
@@ -16,19 +18,16 @@ public class ScheduleBuilder : MonoBehaviour {
     private float journeyLength;
     public bool moving = false;
     public bool clockStarted = false;
-    
-    private void Start()
-    {
-                
-    }
+
 
         private void Update()
     {
-        TOD = CanadianRhythm.timeOfDay;
+        simTime = SimulationEpochClock.gameDateTime;
+       // TOD = CanadianRhythm.timeOfDay;
         executeMove();
         if (agentSchedule.Count>0)          
         {
-            nextMove = agentSchedule[0].action.ToString() + " @ " + MathHelpers.FloatToTime(agentSchedule[0].eventTime);
+            nextMove = agentSchedule[0].action.ToString() + " @ " + (agentSchedule[0].eventTime).ToString() ;
             checkHopper();
             if (agentSchedule[0].complete == true)
             {
@@ -37,8 +36,7 @@ public class ScheduleBuilder : MonoBehaviour {
                 TransferNavData();
             }
         }
-        
-    }
+            }
 
     private void TransferNavData()
     {
@@ -52,7 +50,7 @@ public class ScheduleBuilder : MonoBehaviour {
     private void checkHopper()
     {
      
-        if (TOD > agentSchedule[0].eventTime && agentSchedule[0].complete == false)
+        if (simTime.TimeOfDay.CompareTo(agentSchedule[0].eventTime)>0 && agentSchedule[0].complete == false)
         {
             moving = true;
             agentSchedule[0].complete = true;
